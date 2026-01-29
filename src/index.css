@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* CSS Variables for Background Colors */
+    --token-dcb5abee-f4cc-4336-9800-a1eb8a5b9414: rgb(21, 21, 19);
+    --token-e7580645-294b-4fb1-bde8-c21a5a3f7676: #f7f7f2;
+    --token-183b5922-d0ea-48d1-af7c-77d51908fd54: rgb(226, 225, 223);
+    
+    /* Framer Text Color */
+    --framer-text-color: var(--token-183b5922-d0ea-48d1-af7c-77d51908fd54, rgb(226, 225, 223));
+    
+    /* Default to dark theme - bg-dark with tx-light */
+    background-color: #151513;
+    color: #cdcccc;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  /* Global styles for body, input, textarea, select, button */
+  body,
+  input,
+  textarea,
+  select,
+  button {
+    @apply font-sans text-xs;
+    background-color: #151513;
+    color: #cdcccc;
+  }
+
+  body {
+    @apply m-0 min-w-[320px] min-h-screen;
+  }
+
+  a {
+    @apply font-medium text-[#646cff] no-underline;
+  }
+
+  a:hover {
+    @apply text-[#535bf2];
+  }
+
+  h1 {
+    @apply text-[3.2em] leading-[1.1];
+  }
+
+  button {
+    @apply rounded-lg border border-transparent px-[1.2em] py-[0.6em] font-medium cursor-pointer transition-colors;
+  }
+
+  button:hover {
+    @apply border-[#646cff];
+  }
+
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
+  /* Light theme - bg-light with tx-dark */
+  @media (prefers-color-scheme: light) {
+    :root {
+      background-color: #efeeec;
+      color: #222725;
+    }
+    
+    body,
+    input,
+    textarea,
+    select,
+    button {
+      background-color: #efeeec;
+      color: #222725;
+    }
+    
+    a:hover {
+      @apply text-[#747bff];
+    }
+    
+    button {
+      background-color: #efeeec;
+      color: #222725;
+    }
+  }
+}
+
+@layer utilities {
+  @media (prefers-color-scheme: light) {
+    .bg-dark-mode {
+      background-color: var(--token-e7580645-294b-4fb1-bde8-c21a5a3f7676, #f7f7f2);
+    }
+  }
+}
