@@ -1,22 +1,54 @@
+import { useEffect, useRef, useState } from 'react';
+
 const About = () => {
   return (
     <div className="w-full">
       {/* About Gleen Section */}
-      <section className="bg-bg-dark py-16">
-        <div className="max-w-[1400px] mx-auto px-4">
+      <section className="bg-bg-dark py-8 md:py-16">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
           {/* Header Section */}
-          <div className="flex items-start justify-between mb-8 border-b border-[#545454] pb-8">
+          <div 
+            className="flex flex-col md:flex-row items-start justify-between mb-6 md:mb-8 border-b border-[#545454] pb-6 md:pb-8 gap-4 md:gap-0"
+            ref={(el) => {
+              if (el) {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        const h1 = entry.target.querySelector('h1') as HTMLElement;
+                        const p = entry.target.querySelector('p') as HTMLElement;
+                        if (h1) {
+                          h1.style.opacity = '1';
+                          h1.style.transform = 'translateX(0)';
+                        }
+                        if (p) {
+                          p.style.opacity = '1';
+                          p.style.transform = 'translateX(0)';
+                        }
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  { threshold: 0.1 }
+                );
+                observer.observe(el);
+              }
+            }}
+          >
             {/* Left Side - Title */}
             <div className="flex flex-col">
               <h1
                 className="text-tx-light"
                 style={{
                   fontFamily: '"Anton", "Anton Placeholder", sans-serif',
-                  fontSize: '148px',
+                  fontSize: 'clamp(48px, 8vw, 148px)',
                   fontStyle: 'normal',
                   fontWeight: 400,
                   letterSpacing: '0em',
                   lineHeight: '0.9em',
+                  opacity: 0,
+                  transform: 'translateX(-50px)',
+                  transition: 'opacity 1s ease-out, transform 1s ease-out',
                 }}
               >
                 <span className="block">ABOUT</span>
@@ -25,40 +57,127 @@ const About = () => {
             </div>
 
             {/* Right Side - Tagline */}
-            <div className="flex-1 max-w-md ml-8 self-end">
-              <p className="text-tx-light text-base leading-relaxed text-right" style={{
-            fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-            fontSize: '18px',
-            fontWeight: 400,
-            lineHeight: '1.6em',
-          }}>
+            <div className="flex-1 max-w-full md:max-w-md md:ml-8 self-end">
+              <p 
+                className="text-tx-light text-sm md:text-base leading-relaxed text-left md:text-right" 
+                style={{
+                  fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
+                  fontSize: 'clamp(14px, 2vw, 18px)',
+                  fontWeight: 400,
+                  lineHeight: '1.6em',
+                  opacity: 0,
+                  transform: 'translateX(50px)',
+                  transition: 'opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s',
+                }}
+              >
                 ELEVATING WEB DESIGN & MARKETING FOR REAL ESTATE, GAMING, AND BEYOND
               </p>
             </div>
           </div>
 
           {/* Welcome To / My Life */}
-          <div className="flex items-center justify-between mb-8"  style={{
-            fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-            fontSize: '18px',
-            fontWeight: 400,
-            lineHeight: '1.6em',
-          }}>
-            <div className="text-tx-light">
+          <div 
+            className="flex items-center justify-between mb-6 md:mb-8"  
+            style={{
+              fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
+              fontSize: 'clamp(14px, 2vw, 18px)',
+              fontWeight: 400,
+              lineHeight: '1.6em',
+            }}
+            ref={(el) => {
+              if (el) {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        const divs = entry.target.querySelectorAll('div');
+                        divs.forEach((div, idx) => {
+                          setTimeout(() => {
+                            const divElement = div as HTMLElement;
+                            if (divElement) {
+                              divElement.style.opacity = '1';
+                              divElement.style.transform = 'translateY(0)';
+                            }
+                          }, idx * 150);
+                        });
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  { threshold: 0.1 }
+                );
+                observer.observe(el);
+              }
+            }}
+          >
+            <div 
+              className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+              }}
+            >
               Welcome To
             </div>
-            <div className="text-tx-light">
+            <div 
+              className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out 0.15s, transform 0.6s ease-out 0.15s',
+              }}
+            >
               My Life
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-24">
           {/* Header Image */}
-          <div className="w-full h-[auto] overflow-hidden mb-12">
+          <div 
+            className="w-full h-[auto] overflow-hidden mb-12 rounded-lg transition-transform duration-700"
+            ref={(el) => {
+              if (el) {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        const target = entry.target as HTMLElement;
+                        if (target) {
+                          target.style.opacity = '1';
+                          target.style.transform = 'translateX(0)';
+                        }
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  { threshold: 0.1 }
+                );
+                observer.observe(el);
+              }
+            }}
+            style={{
+              opacity: 0,
+              transform: 'translateX(-50px)',
+              transition: 'opacity 1s ease-out, transform 1s ease-out',
+            }}
+          >
             <img
               src="/img/Glenn.png"
               alt="Gleen Wilmore"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-all duration-500 cursor-pointer"
+              style={{
+                transform: 'scale(1)',
+                filter: 'brightness(1)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.filter = 'brightness(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.filter = 'brightness(1)';
+              }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
@@ -66,34 +185,87 @@ const About = () => {
           </div>
 
           {/* Text Content */}
-          <div className="space-y-6" style={{
-            fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-            fontSize: '18px',
-            fontWeight: 400,
-            lineHeight: '1.6em',
-          }}>
+          <div 
+            className="space-y-4 md:space-y-6" 
+            style={{
+              fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
+              fontSize: 'clamp(14px, 2vw, 18px)',
+              fontWeight: 400,
+              lineHeight: '1.6em',
+            }}
+            ref={(el) => {
+              if (el) {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        const paragraphs = entry.target.querySelectorAll('p');
+                        paragraphs.forEach((p, idx) => {
+                          setTimeout(() => {
+                            const pElement = p as HTMLElement;
+                            if (pElement) {
+                              pElement.style.opacity = '1';
+                              pElement.style.transform = 'translateY(0)';
+                            }
+                          }, idx * 100);
+                        });
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  { threshold: 0.1 }
+                );
+                observer.observe(el);
+              }
+            }}
+          >
             <p
               className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+              }}
             >
               Gleen Wilmore is an independent web designer based in Edinburgh, working with individuals, startups, and established businesses across Scotland and the UK.
             </p>
             <p
-              className="text-tx-light"              
+              className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+              }}
             >
               My work sits at the intersection of design and implementation. I design and build bespoke websites with a strong emphasis on clarity, performance, and long-term usability, taking care to ensure each project is considered both visually and technically. Rather than following a fixed stack, I select tools and frameworks according to the needs of the work, with experience across WordPress and modern front-end frameworks.
             </p>
             <p
-              className="text-tx-light"              
+              className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+              }}
             >
               I lead projects end-to-end, from early design exploration through to delivery. I work closely with clients throughout the process and, where appropriate, collaborate with a small network of trusted developers to maintain a high technical standard.
             </p>
             <p
-              className="text-tx-light"              
+              className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+              }}
             >
               My practice is grounded in restraint and attention to detail — favouring clean design, accessible interfaces, and systems that are straightforward to maintain. The focus is on producing work that feels deliberate, durable, and professional, and that continues to serve its purpose beyond launch.
             </p>
             <p
-              className="text-tx-light"              
+              className="text-tx-light"
+              style={{
+                opacity: 0,
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+              }}
             >
             Outside of client work, I enjoy lifting weights and reading classic literature            
             </p>
@@ -103,21 +275,51 @@ const About = () => {
       </section>
 
       {/* Core Principles Section */}
-      <section className="py-16 bg-[#efeeec] md:py-8">
-        <div className="max-w-[1400px] mx-auto px-4">
+      <section className="py-8 md:py-16 bg-[#efeeec]">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
           {/* Header Section */}
-          <div className="flex items-start justify-between mb-8 border-b border-[#222725] pb-8">
+          <div 
+            className="flex flex-col md:flex-row items-start justify-between mb-6 md:mb-8 border-b border-[#222725] pb-6 md:pb-8 gap-4 md:gap-0"
+            ref={(el) => {
+              if (el) {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        const h2 = entry.target.querySelector('h2') as HTMLElement;
+                        const p = entry.target.querySelector('p') as HTMLElement;
+                        if (h2) {
+                          h2.style.opacity = '1';
+                          h2.style.transform = 'translateX(0)';
+                        }
+                        if (p) {
+                          p.style.opacity = '1';
+                          p.style.transform = 'translateX(0)';
+                        }
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  { threshold: 0.1 }
+                );
+                observer.observe(el);
+              }
+            }}
+          >
             {/* Left Side - Main Title */}
             <div className="flex flex-col">
               <h2
                 className="text-[#222725]"
                 style={{
                   fontFamily: '"Anton", "Anton Placeholder", sans-serif',
-                  fontSize: '148px',
+                  fontSize: 'clamp(48px, 8vw, 148px)',
                   fontStyle: 'normal',
                   fontWeight: 400,
                   letterSpacing: '0em',
                   lineHeight: '0.9em',
+                  opacity: 0,
+                  transform: 'translateX(-50px)',
+                  transition: 'opacity 1s ease-out, transform 1s ease-out',
                 }}
               >
                 <span className="block">CORE</span>
@@ -126,17 +328,24 @@ const About = () => {
             </div>
 
             {/* Right Side - Tagline */}
-            <div className="flex-1 max-w-md ml-8">
-              <p className="text-[#222725] text-base leading-relaxed text-right">
+            <div className="flex-1 max-w-full md:max-w-md md:ml-8">
+              <p 
+                className="text-[#222725] text-sm md:text-base leading-relaxed text-left md:text-right"
+                style={{
+                  opacity: 0,
+                  transform: 'translateX(50px)',
+                  transition: 'opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s',
+                }}
+              >
                 BUILT ON A FOUNDATION OF INTEGRITY, INNOVATION, AND COMMITMENT TO EXCELLENCE
               </p>
             </div>
           </div>
 
           {/* Principles List */}
-          <div className="mt-8" style={{
+          <div className="mt-6 md:mt-8" style={{
             fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-            fontSize: '18px',
+            fontSize: 'clamp(14px, 2vw, 18px)',
             fontWeight: 400,
             lineHeight: '1.6em',
           }}>
@@ -157,8 +366,47 @@ const About = () => {
                 { num: '/02', core: 'Authenticity', value: 'Telling stories that resonate' },
                 { num: '/03', core: 'Collaboration', value: 'Partnering with clients' },
                 { num: '/04', core: 'Excellence', value: 'Pursuing quality' },
-              ].map((principle, index) => (
-                <div key={index} className="relative w-full flex flex-row py-2">
+              ].map((principle, index) => {
+                const principleRef = useRef<HTMLDivElement>(null);
+                const [isVisible, setIsVisible] = useState(false);
+
+                useEffect(() => {
+                  const observer = new IntersectionObserver(
+                    (entries) => {
+                      entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                          setTimeout(() => {
+                            setIsVisible(true);
+                          }, index * 100);
+                          observer.unobserve(entry.target);
+                        }
+                      });
+                    },
+                    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+                  );
+
+                  if (principleRef.current) {
+                    observer.observe(principleRef.current);
+                  }
+
+                  return () => {
+                    if (principleRef.current) {
+                      observer.unobserve(principleRef.current);
+                    }
+                  };
+                }, [index]);
+
+                return (
+                <div 
+                  key={index} 
+                  ref={principleRef}
+                  className="relative w-full flex flex-row py-2"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
+                    transition: `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`,
+                  }}
+                >
                   {/* Column 1: Number */}
                   <div className="w-[30%]"></div>
                   <div className="flex w-[70%] border-b border-[#222725]">
@@ -175,7 +423,8 @@ const About = () => {
                     </div>
                   </div>
                   </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

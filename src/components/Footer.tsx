@@ -30,15 +30,15 @@ const Footer = () => {
 
       {/* Main Footer Content */}
       <div className="bg-bg-dark">
-        <div className="mx-auto px-[2rem] py-16">
-          <div className="grid grid-cols-3 gap-12">
+        <div className="mx-auto px-4 md:px-6 lg:px-[2rem] py-8 md:py-12 lg:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {/* Left Column - Contact Information */}
             <div className="flex flex-col">
               <h3 
                 className="text-tx-light"
                 style={{
                   fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                  fontSize: '36px',
+                  fontSize: 'clamp(24px, 4vw, 36px)',
                   fontWeight: 400,
                 }}
               >
@@ -47,10 +47,10 @@ const Footer = () => {
               
               <a 
                 href="mailto:glenn@glennwilmore.co.uk"
-                className="text-tx-light mb-6 hover:opacity-80 transition-opacity"
+                className="text-tx-light mb-4 md:mb-6 hover:opacity-80 transition-opacity break-all"
                 style={{
                   fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                  fontSize: '60px',
+                  fontSize: 'clamp(28px, 5vw, 60px)',
                   fontWeight: 500,
                   lineHeight: '1.1em',
                   textDecoration: 'none',
@@ -61,10 +61,10 @@ const Footer = () => {
               </a>
               
               <p 
-                className="text-tx-light mb-8"
+                className="text-tx-light mb-6 md:mb-8"
                 style={{
                   fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                  fontSize: '18px',
+                  fontSize: 'clamp(14px, 2vw, 18px)',
                   fontWeight: 400,
                   lineHeight: '1.5em',
                 }}
@@ -120,12 +120,12 @@ const Footer = () => {
 
         {/* Bottom Strip - Copyright and Back to Top */}
         <div className="border-t border-tx-light border-opacity-30">
-          <div className="max-w-[1400px] mx-auto px-[2rem] py-6 flex items-center justify-between">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-[2rem] py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
             <p 
-              className="text-tx-light m-0"
+              className="text-tx-light m-0 text-xs md:text-sm"
               style={{
                 fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                fontSize: '14px',
+                fontSize: 'clamp(12px, 2vw, 14px)',
                 fontWeight: 400,
               }}
             >
@@ -134,10 +134,10 @@ const Footer = () => {
             
             <button 
               onClick={scrollToTop}
-              className="flex items-center gap-2 text-tx-light hover:opacity-80 transition-opacity bg-transparent border-none cursor-pointer"
+              className="flex items-center gap-2 text-tx-light hover:opacity-80 transition-opacity bg-transparent border-none cursor-pointer text-xs md:text-sm"
               style={{
                 fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                fontSize: '14px',
+                fontSize: 'clamp(12px, 2vw, 14px)',
                 fontWeight: 400,
               }}
             >
