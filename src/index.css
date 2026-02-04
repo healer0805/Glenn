@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   :root {
     /* CSS Variables for Background Colors */
     --token-dcb5abee-f4cc-4336-9800-a1eb8a5b9414: rgb(21, 21, 19);
@@ -138,4 +142,154 @@
 
 .animate-fade-in-right {
   animation: fadeInRight 1s ease-out;
+}
+
+/* Font Style Classes */
+.font-anton-large {
+  font-family: "Anton", "Anton Placeholder", sans-serif;
+  font-size: clamp(48px, 8vw, 148px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 0.9em;
+}
+
+.font-anton-medium {
+  font-family: "Anton", "Anton Placeholder", sans-serif;
+  font-size: clamp(32px, 6vw, 64px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 0.9em;
+}
+
+.font-inter-display-base {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6em;
+}
+
+.font-inter-display-lg {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(14px, 2vw, 18px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6em;
+}
+
+.font-inter-display-xl {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(36px, 6vw, 88px);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -3px;
+  line-height: clamp(40px, 6.5vw, 90px);
+}
+
+.font-inter-display-xl-bold {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(36px, 6vw, 88px);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1em;
+}
+
+.font-inter-display-sm {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(13px, 2vw, 15px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.2em;
+}
+
+.font-inter-display-xs {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.font-inter-display-medium {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(14px, 2vw, 18px);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  line-height: 24px;
+}
+
+.font-inter-display-semibold {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.font-inter-display-medium-sm {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.3em;
+}
+
+.font-inter-display-regular {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(32px, 6vw, 64px);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.1em;
+}
+
+.font-anton-medium-sm {
+  font-family: "Anton", "Anton Placeholder", sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.1em;
+}
+
+.font-inter-display-xs-uppercase {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: clamp(10px, 1.5vw, 12px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.font-playfair-italic {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(14px, 2vw, 18px);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.font-playfair-large {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+.font-inter-display-fixed-md {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  line-height: 24px;
+}
+
+.font-inter-display-fixed-lg {
+  font-family: "Inter Display", "Inter Display Placeholder", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
 }

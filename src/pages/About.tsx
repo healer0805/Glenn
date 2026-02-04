@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
+import useImageHover from '../hooks/useImageHover';
+import { aboutData } from '../data/aboutData';
 
 const About = () => {
+  const { hoverHandlers, initialStyle } = useImageHover();
+  const { aboutSection, corePrinciples } = aboutData;
   return (
-    <div className="w-full">
+    <div className="w-full pt-24">
       {/* About Gleen Section */}
       <section className="bg-bg-dark py-8 md:py-16">
         <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
@@ -38,52 +42,36 @@ const About = () => {
             {/* Left Side - Title */}
             <div className="flex flex-col">
               <h1
-                className="text-tx-light"
+                className="text-tx-light font-anton-large"
                 style={{
-                  fontFamily: '"Anton", "Anton Placeholder", sans-serif',
-                  fontSize: 'clamp(48px, 8vw, 148px)',
-                  fontStyle: 'normal',
-                  fontWeight: 400,
-                  letterSpacing: '0em',
-                  lineHeight: '0.9em',
                   opacity: 0,
                   transform: 'translateX(-50px)',
                   transition: 'opacity 1s ease-out, transform 1s ease-out',
                 }}
               >
-                <span className="block">ABOUT</span>
-                <span className="block">GLEEN</span>
+                <span className="block">{aboutSection.title.line1}</span>
+                <span className="block">{aboutSection.title.line2}</span>
               </h1>
             </div>
 
             {/* Right Side - Tagline */}
             <div className="flex-1 max-w-full md:max-w-md md:ml-8 self-end">
               <p 
-                className="text-tx-light text-sm md:text-base leading-relaxed text-left md:text-right" 
+                className="text-tx-light text-sm md:text-base leading-relaxed text-left md:text-right font-inter-display-lg"
                 style={{
-                  fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                  fontSize: 'clamp(14px, 2vw, 18px)',
-                  fontWeight: 400,
-                  lineHeight: '1.6em',
                   opacity: 0,
                   transform: 'translateX(50px)',
                   transition: 'opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s',
                 }}
               >
-                ELEVATING WEB DESIGN & MARKETING FOR REAL ESTATE, GAMING, AND BEYOND
+                {aboutSection.tagline}
               </p>
             </div>
           </div>
 
           {/* Welcome To / My Life */}
           <div 
-            className="flex items-center justify-between mb-6 md:mb-8"  
-            style={{
-              fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-              fontSize: 'clamp(14px, 2vw, 18px)',
-              fontWeight: 400,
-              lineHeight: '1.6em',
-            }}
+            className="flex items-center justify-between mb-6 md:mb-8 font-inter-display-lg"
             ref={(el) => {
               if (el) {
                 const observer = new IntersectionObserver(
@@ -118,7 +106,7 @@ const About = () => {
                 transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
               }}
             >
-              Welcome To
+              {aboutSection.welcomeText.left}
             </div>
             <div 
               className="text-tx-light"
@@ -128,7 +116,7 @@ const About = () => {
                 transition: 'opacity 0.6s ease-out 0.15s, transform 0.6s ease-out 0.15s',
               }}
             >
-              My Life
+              {aboutSection.welcomeText.right}
             </div>
           </div>
 
@@ -163,21 +151,13 @@ const About = () => {
             }}
           >
             <img
-              src="/img/Glenn.png"
+              src={aboutSection.image}
               alt="Gleen Wilmore"
               className="w-full h-full object-cover transition-all duration-500 cursor-pointer"
               style={{
-                transform: 'scale(1)',
-                filter: 'brightness(1)',
+                ...initialStyle,
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'scale(1.08)';
-                e.currentTarget.style.filter = 'brightness(1.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.filter = 'brightness(1)';
-              }}
+              {...hoverHandlers}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
@@ -186,13 +166,7 @@ const About = () => {
 
           {/* Text Content */}
           <div 
-            className="space-y-4 md:space-y-6" 
-            style={{
-              fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-              fontSize: 'clamp(14px, 2vw, 18px)',
-              fontWeight: 400,
-              lineHeight: '1.6em',
-            }}
+            className="space-y-4 md:space-y-6 font-inter-display-lg"
             ref={(el) => {
               if (el) {
                 const observer = new IntersectionObserver(
@@ -219,56 +193,19 @@ const About = () => {
               }
             }}
           >
-            <p
-              className="text-tx-light"
-              style={{
-                opacity: 0,
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-              }}
-            >
-              Gleen Wilmore is an independent web designer based in Edinburgh, working with individuals, startups, and established businesses across Scotland and the UK.
-            </p>
-            <p
-              className="text-tx-light"
-              style={{
-                opacity: 0,
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-              }}
-            >
-              My work sits at the intersection of design and implementation. I design and build bespoke websites with a strong emphasis on clarity, performance, and long-term usability, taking care to ensure each project is considered both visually and technically. Rather than following a fixed stack, I select tools and frameworks according to the needs of the work, with experience across WordPress and modern front-end frameworks.
-            </p>
-            <p
-              className="text-tx-light"
-              style={{
-                opacity: 0,
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-              }}
-            >
-              I lead projects end-to-end, from early design exploration through to delivery. I work closely with clients throughout the process and, where appropriate, collaborate with a small network of trusted developers to maintain a high technical standard.
-            </p>
-            <p
-              className="text-tx-light"
-              style={{
-                opacity: 0,
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-              }}
-            >
-              My practice is grounded in restraint and attention to detail — favouring clean design, accessible interfaces, and systems that are straightforward to maintain. The focus is on producing work that feels deliberate, durable, and professional, and that continues to serve its purpose beyond launch.
-            </p>
-            <p
-              className="text-tx-light"
-              style={{
-                opacity: 0,
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-              }}
-            >
-            Outside of client work, I enjoy lifting weights and reading classic literature            
-            </p>
+            {aboutSection.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className="text-tx-light"
+                style={{
+                  opacity: 0,
+                  transform: 'translateY(20px)',
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+                }}
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
         </div>
@@ -309,21 +246,15 @@ const About = () => {
             {/* Left Side - Main Title */}
             <div className="flex flex-col">
               <h2
-                className="text-[#222725]"
+                className="text-[#222725] font-anton-large"
                 style={{
-                  fontFamily: '"Anton", "Anton Placeholder", sans-serif',
-                  fontSize: 'clamp(48px, 8vw, 148px)',
-                  fontStyle: 'normal',
-                  fontWeight: 400,
-                  letterSpacing: '0em',
-                  lineHeight: '0.9em',
                   opacity: 0,
                   transform: 'translateX(-50px)',
                   transition: 'opacity 1s ease-out, transform 1s ease-out',
                 }}
               >
-                <span className="block">CORE</span>
-                <span className="block">PRINCIPLES</span>
+                <span className="block">{corePrinciples.title.line1}</span>
+                <span className="block">{corePrinciples.title.line2}</span>
               </h2>
             </div>
 
@@ -337,18 +268,13 @@ const About = () => {
                   transition: 'opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s',
                 }}
               >
-                BUILT ON A FOUNDATION OF INTEGRITY, INNOVATION, AND COMMITMENT TO EXCELLENCE
+                {corePrinciples.tagline}
               </p>
             </div>
           </div>
 
           {/* Principles List */}
-          <div className="mt-6 md:mt-8" style={{
-            fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-            fontSize: 'clamp(14px, 2vw, 18px)',
-            fontWeight: 400,
-            lineHeight: '1.6em',
-          }}>
+          <div className="mt-6 md:mt-8 font-inter-display-lg">
             {/* Headers */}
             <div className="flex mb-4 pb-2">
               <div className="w-[20%]">
@@ -361,12 +287,7 @@ const About = () => {
 
             {/* Principles List */}
             <div className="space-y-0">
-              {[
-                { num: '/01', core: 'Creative Freedom', value: 'Breaking traditional boundaries' },
-                { num: '/02', core: 'Authenticity', value: 'Telling stories that resonate' },
-                { num: '/03', core: 'Collaboration', value: 'Partnering with clients' },
-                { num: '/04', core: 'Excellence', value: 'Pursuing quality' },
-              ].map((principle, index) => {
+              {corePrinciples.principles.map((principle, index) => {
                 const principleRef = useRef<HTMLDivElement>(null);
                 const [isVisible, setIsVisible] = useState(false);
 

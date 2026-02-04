@@ -4,10 +4,10 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import MyServices from './pages/MyServices';
-import WorkExperience from './pages/WorkExperience';
+import Branding from './pages/Branding';
+import Gaming from './pages/Gaming';
 import PastWork from './pages/PastWork';
 import Contact from './pages/Contact';
-import Education from './pages/Education';
 
 function App() {
   return (
@@ -18,9 +18,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<MyServices />} />
-          <Route path="/work-experience" element={<WorkExperience />} />
+          <Route path="/branding" element={<Branding />} />
+          <Route path="/gaming" element={<Gaming />} />
           <Route path="/past-work" element={<PastWork />} />
-          <Route path="/education" element={<Education />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

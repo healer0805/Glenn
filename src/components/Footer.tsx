@@ -8,10 +8,10 @@ const Footer = () => {
   const navItems = [
     { num: '01', name: 'Home', path: '/' },
     { num: '02', name: 'About', path: '/about' },
-    { num: '03', name: 'My Services', path: '/services' },
-    { num: '04', name: 'Work Experience', path: '/work-experience' },
-    { num: '05', name: 'Past Work', path: '/past-work' },
-    { num: '06', name: 'Education', path: '/education' },
+    { num: '03', name: 'Full Stack Development', path: '/services' },
+    { num: '04', name: 'Branding', path: '/branding' },
+    { num: '05', name: 'Gaming', path: '/gaming' },
+    { num: '06', name: 'Past Work', path: '/past-work' },
     { num: '07', name: 'Contact', path: '/contact' },
   ];
 
@@ -129,20 +129,14 @@ const Footer = () => {
                 fontWeight: 400,
               }}
             >
-              Copyright © Nickolas Anthony Kossup {new Date().getFullYear()}
+              Copyright © Gleen Wilmore {new Date().getFullYear()}
             </p>
             
             <button 
               onClick={scrollToTop}
-              className="flex items-center gap-2 text-tx-light hover:opacity-80 transition-opacity bg-transparent border-none cursor-pointer text-xs md:text-sm"
-              style={{
-                fontFamily: '"Inter Display", "Inter Display Placeholder", sans-serif',
-                fontSize: 'clamp(12px, 2vw, 14px)',
-                fontWeight: 400,
-              }}
+              className="flex items-center text-tx-light hover:opacity-80 transition-opacity border-none cursor-pointer text-xs md:text-sm bg-[#efeeec] rounded-full p-2 w-10 h-10 flex items-center justify-center"
             >
-              <span>↻</span>
-              <span>Back to top</span>
+              <span className="text-[#151513] text-xl">T</span>
             </button>
           </div>
         </div>
